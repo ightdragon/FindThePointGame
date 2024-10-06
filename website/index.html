@@ -1,0 +1,196 @@
+<script>
+    
+    
+    function myFiddle(){
+        
+        var x = event.pageX;
+        var y = event.pageY;
+        
+        
+        
+        var cords = "X: " + x + " Y: " + y ;
+        
+        document.getElementById("values").innerHTML = cords;
+        var data = getDate();
+        var datavar = data*10;
+    
+        document.getElementById("checkthis").innerHTML = "Find this: " + datavar;
+        
+        if(x === datavar || y === datavar){
+                document.getElementById("changethis").innerHTML = "Found me!";
+            }
+        
+    }
+    
+    function getDate(){
+        var date = new Date();
+        var seconds = date.getSeconds();
+        return seconds;
+    }
+    
+    function emptyString(event){
+        document.getElementById("changethis").innerHTML="";
+    }
+
+
+
+    const circle = document.getElementById('circle');
+
+btn.addEventListener('click', () => {
+    menu.classList.toggle('open');
+});
+
+document.addEventListener('mousemove', (e) => {
+    const height = circle.offsetHeight;
+    const width = circle.offsetWidth;
+
+
+    if (e.target.tagName === 'A' ||
+        e.target.tagName === 'BUTTON' ||
+        e.target.parentNode.tagName === 'BUTTON') {
+        circle.classList.add('big');
+    } else {
+        circle.classList.remove('big');
+    }
+
+    setTimeout(() => { 
+        circle.style.left = `${e.pageX - width/2}px`;
+        circle.style.top = `${e.pageY - height/2}px`;
+    }, 20);
+});
+    
+    </script>
+    
+    
+    <html>
+    
+    <h1 style="font-size: 36px; color: #b4b7eb; text-align: center; margin-top: 20px; font-family: 'Cursive', sans-serif; text-shadow: -1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000, 1px 1px 0 #000;">
+    Find the Point!
+    </h1>
+    
+        <script src="js.js"></script>
+        
+        <body class="bg-[#181028] flex justify-center items-center min-h-screen">
+            
+            <div class="box" onmousemove="myFiddle(this)"><p id="changethis" onclick="emptyString(event)"></p></div>
+            <div id="circle" class="circle"></div>
+        <p id="values"></p>
+            
+            <h2 id="checkthis"  ></h2>
+                    
+    
+            
+            
+        </body>
+    </html>
+    
+    <style>
+    
+    body {
+    background: linear-gradient(135deg, rgba(49, 154, 240, 0.8), rgba(255, 255, 255, 0.8));
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+p {
+    color: #333;
+    line-height: 1.5;
+}
+
+#changethis {
+    font-size: 24px;
+    font-family: 'Cursive', sans-serif; /* Playful font */
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+#changethis:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.box {
+    width: 500px;
+    height: 300px; /* Auto height for flexibility */
+    background-color: rgb(245, 41, 23);
+    margin: 25px auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.line {
+    background: #fff;
+    height: 2px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn {
+    background-color: #fff; /* Button background */
+    color: rgb(245, 41, 23);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: rgb(245, 41, 23);
+    color: white;
+    transform: scale(1.05); /* Scale on hover */
+}
+
+#menu {
+    transition: background 0.3s;
+}
+
+.hov {
+    position: relative;
+}
+
+.hov::before {
+    content: '';
+    background: #b4b7eb;
+    opacity: 0;
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    height: 120%;
+    width: 3px;
+    transition: opacity 0.3s;
+}
+
+.hov:hover::before {
+    opacity: 1;
+}
+
+.circle {
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    pointer-events: none;
+    position: fixed;
+    top: -10rem;
+    left: -10rem;
+    height: 2rem;
+    width: 2rem;
+    transition: transform 0.4s, background 0.4s;
+}
+
+.circle.big {
+    background: white;
+    transform: scale(2);
+}
+
+    </style>
